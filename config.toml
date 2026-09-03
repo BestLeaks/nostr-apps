@@ -16,6 +16,12 @@ theme = "tokyo-night"
 repo = "https://codeberg.org/ZamRock-Radio/nostr-apps-deploy"
 license = "AGPL-3.0"
 
+# --- SEO / social cards ---
+# og_image: path (relative to static/) for the Open Graph / Twitter card image.
+# Drop the launch screenshot here (e.g. static/card.png).
+og_image = "card.png"
+og_type = "website"
+
 # --- Taxonomies ---
 # categories and platforms drive the filter nav on the directory page.
 taxonomies = [

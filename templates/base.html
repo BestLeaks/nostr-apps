@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>{% block title %}{{ config.title }}{% endblock title %}</title>
 <meta name="description" content="{{ config.description }}"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="{{ current_url | default(value=config.base_url) }}"/>
+{% set og_img = get_url(path='/' ~ config.extra.og_image) if config.extra.og_image else '' %}
+<meta property="og:type" content="{{ config.extra.og_type }}"/>
+<meta property="og:site_name" content="{{ config.title }}"/>
+<meta property="og:title" content="{% block og_title %}{{ config.title }}{% endblock og_title %}"/>
+<meta property="og:description" content="{{ config.description }}"/>
+<meta property="og:url" content="{{ current_url | default(value=config.base_url) }}"/>
+{% if og_img %}<meta property="og:image" content="{{ og_img }}"/>{% endif %}
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="{% block tw_title %}{{ config.title }}{% endblock tw_title %}"/>
+<meta name="twitter:description" content="{{ config.description }}"/>
+{% if og_img %}<meta name="twitter:image" content="{{ og_img }}"/>{% endif %}
+<meta name="theme-color" content="#1a1b26"/>
+{% block head_extra %}{% endblock head_extra %}
 {% if config.extra.theme == "sakura-mochi" %}
 <style>
 :root{
@@ -33,7 +48,7 @@
 }
 </style>
 {% endif %}
-<link rel="stylesheet" href="{{ get_url(path='sass/main.css') }}">
+ <link rel="stylesheet" href="{{ get_url(path='sass/main.css') }}">
 </head>
 <body data-layout="{{ config.extra.layout }}">
 {% block content %}{% endblock content %}
