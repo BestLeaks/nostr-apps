@@ -7,9 +7,11 @@ categories = ["music", "radio", "player"]
 platforms = ["web"]
 npub = "npub1zamrock"
 source = "https://git.zamrock.net/ZamRock-Radio/nostr-radio-app"
+website = "https://zamrock.net"
+workshop = "https://gitworkshop.dev/npub10leeq6j8ff497swgt0g2x7lrdukm0yrymmnhj0laytnddnuku3xqkp58zs/relay.ngit.dev/nostr-radio-app"
 thumb = "/zamzam-icon.png"
 url = "https://nostr.zamrock.net"
-gallery = ["/zamzam-icon.png", "/card.png"]
+gallery = ["/zamzam-icon.png"]
 features = [
   "Live now-playing from Icepick",
   "Like/dislike the stream as Nostr kind-7s",

@@ -71,6 +71,15 @@ img{display:block}
 .item-section .meta span{font-size:12px;padding:4px 10px;border-radius:6px;background:var(--surface);border:1px solid var(--border);color:var(--text-dim)}
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
 .gallery img{width:100%;border-radius:10px;border:1px solid var(--border)}
+
+/*  prominent community hub callout */
+.hubspot{margin-top:32px}
+.hubspot-inner{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:calc(var(--radius) + 8px);padding:30px;background:linear-gradient(150deg,color-mix(in srgb, var(--accent) 12%, var(--surface)),var(--surface) 55%)}
+.hubspot-inner::before{content:"";position:absolute;top:-90px;right:-90px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 30%,transparent),transparent 70%)}
+.hubspot-badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:999px;color:var(--text);background:color-mix(in srgb,var(--accent) 22%,transparent);border:1px solid color-mix(in srgb,var(--accent) 45%,transparent)}
+.hubspot-head h3{margin:14px 0 6px;font-size:22px;font-weight:800;letter-spacing:-.02em}
+.hubspot-desc{color:var(--text-dim);font-size:14.5px;max-width:52ch}
+.hubspot .btn{margin-top:18px}
 .content-body{margin-top:30px}
 .content-body p{color:var(--text-dim);font-size:15px}
 .npub{color:var(--accent)}

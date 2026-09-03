@@ -7,8 +7,9 @@ categories = ["messaging", "chat", "social"]
 platforms = ["linux", "macos", "windows", "android"]
 npub = "npub1zamrock"
 source = "https://github.com/VectorPrivacy/Vector"
-thumb = "https://vectorapp.io/Favicons/.png/vector_favicon_512.png"
+thumb = "/vector-icon.png"
 url = "https://vectorapp.io"
+communities = [{ name = "Vector Hub", url = "https://vectorapp.io/hub" }]
 gallery = []
 features = [
   "End-to-end encrypted DMs (NIP-17)",

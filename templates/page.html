@@ -31,6 +31,35 @@
   </div>
   {% endif %}
 
+  {% if page.extra.website %}
+  <div class="item-section">
+    <h4>Website</h4>
+    <a href="{{ page.extra.website }}" target="_blank">{{ page.extra.website }}</a>
+  </div>
+  {% endif %}
+
+  {% if page.extra.workshop %}
+  <div class="item-section">
+    <h4>GitWorkshop</h4>
+    <a href="{{ page.extra.workshop }}" target="_blank">{{ page.extra.workshop }}</a>
+  </div>
+  {% endif %}
+
+  {% if page.extra.communities %}
+  <div class="hubspot">
+    <div class="hubspot-inner">
+      <div class="hubspot-head">
+        <span class="hubspot-badge">Community Hub</span>
+        <h3>Find your people on the Vector Hub</h3>
+      </div>
+      <p class="hubspot-desc">Browse servers, groups, and regulars already chatting privately on Vector in one place.</p>
+      {% for c in page.extra.communities %}
+      <a class="btn visit" href="{{ c.url }}" target="_blank">Open {{ c.name }} →</a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
   {% if page.extra.platforms %}
   <div class="item-section">
     <h4>Platforms</h4>
