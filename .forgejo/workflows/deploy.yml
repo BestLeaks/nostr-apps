@@ -1,20 +1,8 @@
-name: Build & Deploy
+name: Deploy Codeberg Pages
 
-# Host-aware workflow: one file adapts to whatever host runs it.
-#
-#   Codeberg  -> build Zola, deploy to Codeberg Pages (nostr-apps.zamrock.net)
-#   GitHub    -> build Zola, deploy to GitHub Pages (<user>.github.io/nostr-zamrock)
-#   Forgejo   -> build Zola only (we deploy via our own pipeline)
-#   other     -> build only, user adds their own Pages deploy
-#
-# Each job has its own `runs-on` label, so on any given host only the job(s)
-# whose runner exists will run; the rest wait for a runner that is never
-# scheduled. Each deploy job is self-sufficient (checkout -> install -> build
-# -> deploy) so no host depends on third-party actions that another host can't
-# mirror (e.g. `actions/upload-pages-artifact` is not mirrored on Codeberg's
-# `data.forgejo.org` action cache).
-#
-# Canonical site: nostr-apps.zamrock.net via Codeberg Pages.
+# Build the Zola directory site and publish it to Codeberg Pages.
+# Canonical site: nostr-apps.zamrock.net (served via Cloudflare Worker proxy).
+# Forks: deploys to <fork-owner>.codeberg.page/Nostr-Apps/.
 
 on:
   push:
@@ -26,7 +14,6 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # --- Deploy on Codeberg (canonical nostr-apps.zamrock.net) ---
   deploy-codeberg:
     runs-on: codeberg-small
     if: ${{ forge.ref == 'refs/heads/main' }}
@@ -51,57 +38,3 @@ jobs:
           site: https://ZamRock-Radio.codeberg.page/nostr-apps-deploy/
           token: ${{ forge.token }}
           source: public/
-
-  # --- Deploy on GitHub (free Pages for fork owners) ---
-  deploy-github:
-    runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install Zola
-        run: |
-          mkdir -p /tmp/zola-bin
-          curl -sL -o /tmp/zola.tar.gz https://github.com/getzola/zola/releases/download/v0.23.3/zola-v0.23.3-x86_64-unknown-linux-gnu.tar.gz
-          tar -xzf /tmp/zola.tar.gz -C /tmp/zola-bin zola
-          chmod +x /tmp/zola-bin/zola
-          /tmp/zola-bin/zola --version
-
-      - name: Build Zola site
-        run: /tmp/zola-bin/zola build
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: public
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-  # --- Forgejo: build only, deploy is manual via our own pipeline ---
-  build-forgejo:
-    runs-on: cyberpanel-vps
-    if: ${{ forge.ref == 'refs/heads/main' }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install Zola
-        run: |
-          mkdir -p /tmp/zola-bin
-          curl -sL -o /tmp/zola.tar.gz https://github.com/getzola/zola/releases/download/v0.23.3/zola-v0.23.3-x86_64-unknown-linux-gnu.tar.gz
-          tar -xzf /tmp/zola.tar.gz -C /tmp/zola-bin zola
-          chmod +x /tmp/zola-bin/zola
-          /tmp/zola-bin/zola --version
-
-      - name: Build Zola site
-        run: /tmp/zola-bin/zola build
