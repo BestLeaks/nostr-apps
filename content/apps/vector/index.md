@@ -1,20 +1,22 @@
 +++
 title = "Vector"
-description = "Privacy-focused Nostr chat client with end-to-end encryption, local whisper speech-to-text, and Tor support."
+description = "Private & encrypted desktop messenger — free, open-source, decentralized, and metadata-free, built on Nostr."
 
 [extra]
-categories = ["messaging", "chat", "privacy"]
-platforms = ["linux", "android"]
+categories = ["messaging", "chat", "social"]
+platforms = ["linux", "macos", "windows", "android"]
 npub = "npub1zamrock"
-source = "https://git.zamrock.net/ZamRock-Radio/Vector"
-thumb = "https://vectorapp.io/icon.png"
+source = "https://github.com/VectorPrivacy/Vector"
+thumb = "https://vectorapp.io/Favicons/.png/vector_favicon_512.png"
 url = "https://vectorapp.io"
 gallery = []
 features = [
-  "End-to-end encrypted messaging",
-  "Local speech-to-text (whisper)",
-  "Tor support",
+  "End-to-end encrypted DMs (NIP-17)",
+  "No KYC, no ads, no metadata tracking",
+  "Runs on virtually any device (<200MB RAM)",
+  "Free & open source by Formless Labs",
+  "Optional local Whisper voice transcription",
 ]
 +++
 
-Vector is ZamRock's privacy-focused Nostr chat client. Built for end-to-end encrypted conversations with whisper-powered local transcription and optional Tor routing. Available for Linux (including an AUR package with a pacman repo at git.zamrock.net/ZamRock-Radio/Vector-AUR) and Android.
+Vector is a private, encrypted messenger for Windows, macOS, Linux, and Android — built on Nostr and designed as a secure "hardline" between you and your contacts. It's free, open source, decentralized, and censorship-resistant: no KYC, no advertisements, and no ability to trace your metadata. Conversations use NIP-17 end-to-end encryption over a relay network, so there are no centralized servers storing your messages and no way for even the developers to read them. Lightweight and energy-efficient enough to run on almost any hardware, Vector is privacy without the bloat.

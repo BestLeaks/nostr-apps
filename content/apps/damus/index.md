@@ -1,19 +1,21 @@
 +++
 title = "Damus"
-description = "A popular social client for iOS."
+description = "The classic open-source Nostr client for iPhone & iPad — clean, native, and built for sovereign social."
 
 [extra]
-categories = ["microblogging"]
+categories = ["microblogging", "social"]
 platforms = ["ios"]
 npub = "npub1xd4keys"
 source = "https://github.com/damus-io/damus"
-thumb = "https://cdn.satellite.earth/cb72c77cd77b6de306e30092eb66edf2271afb85a05852e19e94188d8b83c520.png"
+thumb = "https://damus.io/logo_icon.png"
 url = "https://damus.io"
 gallery = []
 features = [
-  "Native, minimal iOS client",
-  "Open source",
+  "Native iOS experience with zaps built in",
+  "End-to-end encrypted DMs",
+  "Open source — review the code yourself",
+  "No ads, no algorithm, no account required",
 ]
 +++
 
-Damus is the classic open-source Nostr client for iOS — simple, native, and built for the decentralized web.
+Damus is the original Nostr client for iPhone and iPad. It proves you can have a beautiful, native iOS app that runs on the decentralized web — with no ads, no corporate algorithm, and no phone-number signup. Tap a key, create a free account, and start posting; your content lives on the network, not on some server. With support for zaps, encrypted DMs, and quote reposts, Damus has been the gateway for millions into Nostr.

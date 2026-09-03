@@ -19,6 +19,9 @@
 <meta name="twitter:description" content="{{ config.description }}"/>
 {% if og_img %}<meta name="twitter:image" content="{{ og_img }}"/>{% endif %}
 <meta name="theme-color" content="#1a1b26"/>
+<link rel="icon" href="{{ get_url(path='favicon.svg') }}" type="image/svg+xml"/>
+<link rel="icon" href="{{ get_url(path='favicon.png') }}" type="image/png"/>
+<link rel="shortcut icon" href="{{ get_url(path='favicon.ico') }}" type="image/x-icon"/>
 {% block head_extra %}{% endblock head_extra %}
 {% if config.extra.theme == "sakura-mochi" %}
 <style>
