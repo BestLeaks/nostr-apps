@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title %}{{ config.title }} — Directory{% endblock title %}
+
+{% block content %}
+{# collect apps / bots from content sections #}
+{% set apps = get_section(path="apps/_index.md") %}
+{% set bots = get_section(path="bots/_index.md") %}
+
+<header class="sitehead">
+  <div class="bar">
+    <div class="brand"><a href="/">nostr<span>zamrock</span></a></div>
+    <nav class="navlinks">
+      <a href="#apps" class="on">Apps</a>
+      <a href="#bots">Bots</a>
+    </nav>
+    <a class="btn" href="{{ config.extra.repo }}">+ Add app</a>
+  </div>
+</header>
+
+{# search / filter strip (shared) #}
+<div class="toolbar">
+  <input id="search" class="search" placeholder="Search apps, bots…" oninput="filterAll()">
+  <select id="platform" class="filter" onchange="filterAll()">
+    <option value="">platform: all</option>
+  </select>
+  <select id="category" class="filter" onchange="filterAll()">
+    <option value="">category: all</option>
+  </select>
+  <span class="count">{{ apps.pages | length }} apps · {{ bots.pages | length }} bots</span>
+</div>
+
+<main class="content">
+  {% if config.extra.layout == "simple" %}
+  {# SIMPLE LAYOUT: standard grid #}
+  <section id="apps">
+    <div class="grid">
+      {% for app in apps.pages %}
+        <article class="card" data-search="{{ app.title | lower }} {{ app.description | lower }}" data-platforms="{{ app.extra.platforms | json_encode() }}" data-categories="{{ app.extra.categories | json_encode() }}">
+        <a href="{{ app.path }}" class="cname">
+          <img src="{{ app.extra.thumb }}" alt="" loading="lazy">
+          <h3>{{ app.title }}</h3>
+        </a>
+        <div class="meta">{% for p in app.extra.platforms %}<span>{{ p }}</span>{% endfor %}</div>
+        <p>{{ app.description }}</p>
+        <div class="tags">{% for c in app.extra.categories %}<span class="tag">{{ c }}</span>{% endfor %}</div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  {% else %}
+  {# ADVANCED LAYOUT: sidebar explorer #}
+  <div class="explorer">
+    <aside class="side">
+      <div class="snav">
+        <div class="grp">Directory</div>
+        <a href="#apps" class="on">All apps<span class="cnt">{{ apps.pages | length }}</span></a>
+        <a href="#bots" class="on">Bots<span class="cnt">{{ bots.pages | length }}</span></a>
+        <div class="grp">Categories</div>
+        <div id="sidecats"></div>
+      </div>
+    </aside>
+    <section id="apps" class="panel">
+      <div class="grid">
+        {% for app in apps.pages %}
+      <article class="card" data-search="{{ app.title | lower }} {{ app.description | lower }}" data-platforms="{{ app.extra.platforms | json_encode() }}" data-categories="{{ app.extra.categories | json_encode() }}">
+          <a href="{{ app.path }}" class="cname">
+            <img src="{{ app.extra.thumb }}" alt="" loading="lazy">
+            <h3>{{ app.title }}</h3>
+          </a>
+          <div class="meta">{% for p in app.extra.platforms %}<span>{{ p }}</span>{% endfor %}</div>
+          <p>{{ app.description }}</p>
+          <div class="tags">{% for c in app.extra.categories %}<span class="tag">{{ c }}</span>{% endfor %}</div>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+  {% endif %}
+
+  {# Bots section #}
+  <section id="bots" class="block">
+    <h2>Bots &amp; Runners</h2>
+    <div class="grid">
+      {% for bot in bots.pages %}
+      <article class="card" data-search="{{ bot.title | lower }} {{ bot.description | lower }}" data-platforms="{{ bot.extra.platforms | json_encode() }}" data-categories="{{ bot.extra.categories | json_encode() }}">
+        <a href="{{ bot.path }}" class="cname">
+          <img src="{{ bot.extra.thumb }}" alt="" loading="lazy">
+          <h3>{{ bot.title }}</h3>
+        </a>
+        <div class="meta">{% for p in bot.extra.platforms %}<span>{{ p }}</span>{% endfor %}</div>
+        <p>{{ bot.description }}</p>
+        <div class="tags">{% for c in bot.extra.categories %}<span class="tag">{{ c }}</span>{% endfor %}</div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+</main>
+
+<footer class="sitefoot">
+  {{ config.title }} · <a href="{{ config.extra.repo }}">fork &amp; run your own</a> / {{ config.extra.license }}
+</footer>
+
+<script>
+// populate platform + category filters from the rendered cards
+(function(){
+  var platSel = document.getElementById('platform');
+  var catSel = document.getElementById('category');
+  var sideCats = document.getElementById('sidecats');
+  var plats = {}, cats = {};
+  document.querySelectorAll('.card').forEach(function(card){
+    JSON.parse(card.getAttribute('data-platforms')||'[]').forEach(function(p){ if(p) plats[p.toLowerCase()]=1; });
+    JSON.parse(card.getAttribute('data-categories')||'[]').forEach(function(c){ if(c) cats[c.toLowerCase()]=1; });
+  });
+  Object.keys(plats).sort().forEach(function(p){
+    var o=document.createElement('option'); o.value=p; o.textContent=p; platSel.appendChild(o);
+  });
+  Object.keys(cats).sort().forEach(function(c){
+    var o=document.createElement('option'); o.value=c; o.textContent=c; catSel.appendChild(o);
+    if(sideCats){
+      var a=document.createElement('a'); a.href='#'; a.textContent=c;
+      a.onclick=function(ev){ ev.preventDefault(); setCat(c); return false; };
+      sideCats.appendChild(a);
+    }
+  });
+})();
+
+function cardShow(card){
+  var q = (document.getElementById('search').value||'').toLowerCase();
+  var p = document.getElementById('platform').value;
+  var c = document.getElementById('category').value;
+  var s = (card.getAttribute('data-search')||'').toLowerCase();
+  var ps = JSON.parse(card.getAttribute('data-platforms')||'[]').map(function(x){return x.toLowerCase();});
+  var cs = JSON.parse(card.getAttribute('data-categories')||'[]').map(function(x){return x.toLowerCase();});
+  var show = (!q || s.indexOf(q)>-1) && (!p || ps.indexOf(p)>-1) && (!c || cs.indexOf(c)>-1);
+  card.style.display = show ? '' : 'none';
+}
+function filterAll(){ document.querySelectorAll('.card').forEach(cardShow); }
+function setCat(name){
+  var sel = document.getElementById('category');
+  sel.value = name;
+  filterAll();
+}
+</script>
+{% endblock content %}

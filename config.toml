@@ -1,0 +1,25 @@
+# nostr-zamrock — Zola config
+# Open directory of Nostr apps, bots, and runners.
+#
+# Layouts & themes are switchable. Set these to pick the default;
+# individual users can override at build time.
+base_url = "https://nostr-apps.zamrock.net"
+title = "nostr-zamrock"
+description = "An open, community-run directory of Nostr apps, bots, and the sites running them."
+
+# --- Design system ---
+# layout: "simple" (terminal grid) | "advanced" (sidebar explorer)
+# theme:  "tokyo-night" | "sakura-mochi" | "vectorapp.io"
+[extra]
+layout = "advanced"
+theme = "tokyo-night"
+repo = "https://git.zamrock.net/ZamRock-Radio/nostr-zamrock"
+license = "AGPL-3.0"
+
+# --- Taxonomies ---
+# categories and platforms drive the filter nav on the directory page.
+taxonomies = [
+  { name = "category", feed = true, paginate_by = 0 },
+  { name = "platform", feed = true, paginate_by = 0 },
+]
+

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>nostr-zamrock — 06 Radio Waves</title>
+<style>
+:root{
+  --bg:#0b0912; --surface:#171226; --text:#f5e6f0; --text-dim:#a78fae;
+  --accent:#f23888; --accent-hover:#ff5a9e; --border:#2b2138; --error:#ff6aa7;
+  --success:#33db98; --info:#88c0d0; --radius:16px;
+  --font:'Plus Jakarta Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.55;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* animated waveform bands */
+.waves{position:fixed;inset:0;z-index:-2;opacity:.5;
+  background:
+    radial-gradient(900px 400px at 80% -10%, rgba(242,56,136,.16), transparent 60%),
+    radial-gradient(700px 400px at 10% 110%, rgba(51,219,152,.10), transparent 60%);
+}
+.waves::before{content:"";position:absolute;left:0;right:0;bottom:0;height:220px;opacity:.25;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 30px, rgba(242,56,136,.5) 30px 32px, transparent 32px 60px);
+  mask-image:linear-gradient(#000,#0000);
+  animation:drift 22s linear infinite;
+}
+@keyframes drift{to{background-position-x:1200px}}
+.noise{position:fixed;inset:0;z-index:-1;opacity:.18;pointer-events:none;
+  background:radial-gradient(circle at 25% 30%, transparent 0 40%, rgba(0,0,0,.6) 100%)}
+
+.topbar{display:flex;align-items:center;gap:26px;padding:20px 0;position:sticky;top:0;z-index:20;background:rgba(11,9,18,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;letter-spacing:-.02em}
+.brand .needle{width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--info));box-shadow:0 0 18px var(--accent)}
+.brand em{font-style:normal;color:var(--accent)}
+nav{display:flex;gap:4px;margin-left:auto}
+nav a{padding:8px 16px;border-radius:10px;font-weight:700;font-size:14px;color:var(--text-dim)}
+nav a:hover{color:var(--text);background:var(--surface)}
+nav a.on{background:var(--accent);color:#0b0912}
+.btn{padding:9px 18px;border-radius:10px;background:var(--accent);color:#0b0912;font-weight:800;font-size:14px}
+
+.hero{padding:64px 0 40px;text-align:center;position:relative}
+.hero .tune{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--success);border:1px solid rgba(51,219,152,.4);padding:6px 14px;border-radius:999px;margin-bottom:22px}
+.hero .tune .eq{display:inline-flex;gap:2px;height:12px;align-items:flex-end}
+.hero .tune .eq i{width:3px;background:var(--success);border-radius:2px;animation:eq 1s ease-in-out infinite}
+.hero .tune .eq i:nth-child(1){height:6px}.hero .tune .eq i:nth-child(2){height:12px;animation-delay:.15s}.hero .tune .eq i:nth-child(3){height:8px;animation-delay:.3s}.hero .tune .eq i:nth-child(4){height:11px;animation-delay:.45s}
+@keyframes eq{50%{transform:scaleY(.3)}}
+.hero h1{font-size:52px;font-weight:800;letter-spacing:-.04em;line-height:1.05}
+.hero h1 .grad{background:linear-gradient(90deg,var(--accent),var(--info),var(--success));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--text-dim);font-size:17px;max-width:560px;margin:18px auto 0}
+.hero .now{display:inline-flex;align-items:center;gap:8px;margin-top:28px;font-size:13px;color:var(--text-dim)}
+.hero .now b{color:var(--text)}
+
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:30px 0 10px}
+.chip{padding:7px 16px;border-radius:999px;border:1px solid var(--border);background:var(--surface);font-size:13px;font-weight:700;color:var(--text-dim);cursor:pointer}
+.chip:hover{border-color:var(--accent);color:var(--text)}
+.chip.on{background:linear-gradient(135deg,var(--accent),#c026d3);color:#fff;border:none}
+
+.tracks{margin-top:26px}
+.track{display:flex;align-items:center;gap:18px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 20px;margin-bottom:12px;transition:.15s}
+.track:hover{border-color:var(--accent);transform:translateX(4px)}
+.track .wave{border-radius:10px;background:#100a1c;padding:10px;display:flex;align-items:center}
+.track .wave svg{width:60px;height:22px;opacity:.7}
+.track img{width:48px;height:48px;border-radius:12px;object-fit:cover}
+.track .info{flex:1}
+.track .info h3{font-size:15px;font-weight:700}
+.track .info p{font-size:12.5px;color:var(--text-dim)}
+.track .meta{display:flex;gap:6px;flex-wrap:wrap}
+.track .meta span{font-size:11px;padding:3px 9px;border-radius:6px;background:var(--bg);border:1px solid var(--border);color:var(--text-dim)}
+.track .eq-r{display:flex;gap:2px;height:16px;align-items:flex-end;opacity:.6}
+.track .eq-r i{width:2.5px;background:var(--success);animation:eq 1s ease-in-out infinite}
+.track .eq-r i:nth-child(1){height:5px}.track .eq-r i:nth-child(2){height:12px;animation-delay:.2s}.track .eq-r i:nth-child(3){height:8px;animation-delay:.4s}.track .eq-r i:nth-child(4){height:14px;animation-delay:.1s}
+
+.hall{margin:44px 0;text-align:center}
+.hall h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.hall p{color:var(--text-dim);font-size:14px;margin-bottom:24px}
+.hall .g{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.hall .site{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px}
+.hall .site b{font-size:15px}
+.hall .site p{font-size:12.5px;margin:6px 0 0;color:var(--text-dim)}
+
+footer{border-top:1px solid var(--border);margin-top:60px;padding:32px 0;text-align:center;color:var(--text-dim);font-size:13px}
+footer a{color:var(--accent);font-weight:700}
+</style>
+</head>
+<body>
+<div class="waves"></div><div class="noise"></div>
+
+<header class="wrap topbar">
+  <div class="brand"><span class="needle"></span>nostr<em>zamrock</em></div>
+  <nav><a href="#" class="on">Apps</a><a href="#">Bots</a><a href="#">Sites</a></nav>
+  <a href="#" class="btn">+ Submit</a>
+</header>
+
+<div class="wrap hero">
+  <span class="tune"><span class="eq"><i></i><i></i><i></i><i></i></span> tuned in · 72 apps live</span>
+  <h1>Surf the <span class="grad">open protocols</span></h1>
+  <p>From ZamRock to the fediverse — a living, forkable index of the apps, bots and runners keeping Nostr weird and wonderful.</p>
+  <div class="now">Now spinning · <b>Amethyst</b> &nbsp;·&nbsp; <span style="color:var(--text-dim)">microblogging · photos · streaming</span></div>
+  <div class="chips">
+    <span class="chip on">All</span><span class="chip">Social</span><span class="chip">Chat</span>
+    <span class="chip">Video</span><span class="chip">Signers</span><span class="chip">Music</span><span class="chip">Zaps</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="tracks">
+    <div class="track">
+      <div class="wave"><svg viewBox="0 0 60 22" fill="none"><path d="M0 11 H12 M16 11 H24 M28 11 H36 M40 11 H48" stroke="#f23888" stroke-width="2"/><path d="M12 7 Q20 3 24 11 Q28 19 36 11" stroke="#33db98" stroke-width="2" fill="none"/><path d="M4 6 Q10 2 16 6 M44 6 Q50 2 56 6" stroke="#88c0d0" stroke-width="1.6"/></svg></div>
+      <img src="https://cdn.satellite.earth/1a4d9d7bb7f3e481aeb5f98b6626b5b4b85d90d59f4d4b00ffa7edbf1c19d6e7.png"/>
+      <div class="info"><h3>Amethyst</h3><p>The best decentralized social network for Android.</p></div>
+      <div class="meta"><span>android</span><span>social</span></div>
+      <div class="eq-r"><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="track">
+      <div class="wave"><svg viewBox="0 0 60 22" fill="none"><path d="M0 11 H12 M16 11 H24 M28 11 H36 M40 11 H48" stroke="#f23888" stroke-width="2"/><path d="M12 7 Q20 3 24 11 Q28 19 36 11" stroke="#33db98" stroke-width="2" fill="none"/><path d="M4 6 Q10 2 16 6 M44 6 Q50 2 56 6" stroke="#88c0d0" stroke-width="1.6"/></svg></div>
+      <img src="https://blossom.primal.net/0444bf8f340786d7021050a216f0401e51656d8ec3c32c04e94c8c46a1cdb5ce.png"/>
+      <div class="info"><h3>Primal</h3><p>Discover the best of Nostr.</p></div>
+      <div class="meta"><span>web</span><span>ios</span><span>android</span></div>
+      <div class="eq-r"><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="track">
+      <div class="wave"><svg viewBox="0 0 60 22" fill="none"><path d="M0 11 H12 M16 11 H24 M28 11 H36 M40 11 H48" stroke="#f23888" stroke-width="2"/><path d="M12 7 Q20 3 24 11 Q28 19 36 11" stroke="#33db98" stroke-width="2" fill="none"/><path d="M4 6 Q10 2 16 6 M44 6 Q50 2 56 6" stroke="#88c0d0" stroke-width="1.6"/></svg></div>
+      <img src="https://cdn.satellite.earth/cb72c77cd77b6de306e30092eb66edf2271afb85a05852e19e94188d8b83c520.png"/>
+      <div class="info"><h3>Damus</h3><p>A popular social client for iOS.</p></div>
+      <div class="meta"><span>ios</span></div>
+      <div class="eq-r"><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="track">
+      <div class="wave"><svg viewBox="0 0 60 22" fill="none"><path d="M0 11 H12 M16 11 H24 M28 11 H36 M40 11 H48" stroke="#f23888" stroke-width="2"/><path d="M12 7 Q20 3 24 11 Q28 19 36 11" stroke="#33db98" stroke-width="2" fill="none"/><path d="M4 6 Q10 2 16 6 M44 6 Q50 2 56 6" stroke="#88c0d0" stroke-width="1.6"/></svg></div>
+      <img src="https://c.nostr.media/771/b71/771b718e31eb08e2309b9c6e4d7475d42377bdc34cba8a00821c489d566fe1b1.png"/>
+      <div class="info"><h3>ZamRock Bot</h3><p>Radio bot bridging Vector + Armada with live scheduling.</p></div>
+      <div class="meta"><span>vector</span><span>armada</span></div>
+      <div class="eq-r"><i></i><i></i><i></i><i></i></div>
+    </div>
+  </div>
+
+  <div class="hall">
+    <h2>On the air across the network</h2>
+    <p>Every fork is a new broadcast — the catalog gets richer the more places it runs.</p>
+    <div class="g">
+      <div class="site"><b>nostr-zamrock.net</b><p>canonical instance · this site</p></div>
+      <div class="site"><b>dev's mirror</b><p>GitHub Pages fork</p></div>
+      <div class="site"><b>loop relay</b><p>full catalog copy</p></div>
+      <div class="site"><b>armada node</b><p>runs directory + bots</p></div>
+    </div>
+  </div>
+</main>
+
+<footer>nostr-zamrock / AGPL-3.0 · <a href="#">fork &amp; broadcast your own</a></footer>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>nostr-zamrock — Design Mockups</title>
+<style>
+:root{
+  --bg:#1a1b26;--surface:#24253a;--text:#c0caf5;--text-dim:#565f89;
+  --accent:#7aa2f7;--accent-hover:#89b4fa;--border:#3b4261;--error:#f7768e;
+  --success:#9ece6a;--radius:14px;--font:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+header{padding:56px 0 22px;text-align:center}
+header h1{font-size:36px;font-weight:800;letter-spacing:-.03em}
+header h1 em{font-style:normal;color:var(--accent)}
+header p{color:var(--text-dim);margin-top:12px;max-width:640px;margin-left:auto;margin-right:auto;font-size:15.5px}
+.badge{margin-top:18px;font-size:13px;color:var(--accent);font-weight:600}
+
+.legend{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:26px 0 8px;padding:0 0 26px;border-bottom:1px solid var(--border)}
+.legend .tag{padding:7px 16px;border-radius:999px;border:1px solid var(--border);background:var(--surface);font-size:13px;font-weight:600;color:var(--text-dim)}
+.legend .tag b{color:var(--text)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:26px;padding:34px 0 70px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+.card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.shot{height:215px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;cursor:pointer}
+.shot iframe{width:200%;height:460px;transform:scale(.5);transform-origin:0 0;border:none;pointer-events:none}
+.shot .open{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:.2s;font-weight:700;color:#fff}
+.card:hover .open{opacity:1}
+.bod{padding:18px 20px}
+.bod .topline{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.bod h3{font-size:17px;font-weight:700}
+.bod .which{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(122,162,247,.4);padding:3px 8px;border-radius:6px}
+.bod p{color:var(--text-dim);font-size:13.5px;margin-top:8px}
+.bod .swatches{margin-top:10px}
+.bod .swatch{display:inline-block;width:13px;height:13px;border-radius:5px;margin:0 4px 0 0;vertical-align:middle;border:1px solid rgba(255,255,255,.12)}
+.bod .view{margin-top:14px;display:inline-block;padding:8px 18px;background:var(--accent);color:var(--bg);border-radius:10px;font-weight:700;font-size:14px}
+.bod .view:hover{background:var(--accent-hover)}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <h1>nostr-<em>zamrock</em> · design directions</h1>
+  <p>Six concepts — <b>three layouts × theme system</b>. Each variant is the same underlying structure with a different theme applied, so picking one now doesn't lock us in. Open full-screen to explore.</p>
+  <div class="badge">layout A: standard grid &nbsp;·&nbsp; layout B: sidebar / explorer &nbsp;·&nbsp; layout C: editorial / zine &nbsp;·&nbsp; layout D: radio waves (ZamRock identity)</div>
+  <div class="legend">
+    <span class="tag"><b>01</b> Tokyo Night</span>
+    <span class="tag"><b>02</b> Sakura Mochi</span>
+    <span class="tag"><b>03</b> Vector Terminal</span>
+    <span class="tag"><b>04</b> Magazine (new)</span>
+    <span class="tag"><b>05</b> Sidebar (new)</span>
+    <span class="tag"><b>06</b> Radio Waves (new)</span>
+  </div>
+</header>
+
+<div class="wrap grid">
+  <div class="card">
+    <a class="shot" href="04-magazine.html" target="_blank"><iframe src="04-magazine.html"></iframe><span class="open">Open full screen</span></a>
+    <div class="bod">
+      <div class="topline"><span class="which">layout C</span><h3>04 · Magazine / Zine</h3></div>
+      <p>Editorial light theme. Big featured hero, divider ribbons, log-list rows and dual category columns. Reads like an open zine — fresh, airy, print-like.</p>
+      <div class="swatches"><span class="swatch" style="background:#eaeaef"></span><span class="swatch" style="background:#5d8fe0"></span><span class="swatch" style="background:#1a1b26"></span></div>
+      <a class="view" href="04-magazine.html" target="_blank">Preview →</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a class="shot" href="05-sidebar.html" target="_blank"><iframe src="05-sidebar.html"></iframe><span class="open">Open full screen</span></a>
+    <div class="bod">
+      <div class="topline"><span class="which">layout B</span><h3>05 · Sidebar / Explorer</h3></div>
+      <p>Catppuccin dark. Persistent left nav (apps/bots/categories), content on the right. Classic app-store / file-explorer feel — great for deep browsing of a big catalog.</p>
+      <div class="swatches"><span class="swatch" style="background:#1e1e2e"></span><span class="swatch" style="background:#89b4fa"></span><span class="swatch" style="background:#cdd6f4"></span></div>
+      <a class="view" href="05-sidebar.html" target="_blank">Preview →</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a class="shot" href="06-radio-waves.html" target="_blank"><iframe src="06-radio-waves.html"></iframe><span class="open">Open full screen</span></a>
+    <div class="bod">
+      <div class="topline"><span class="which">layout D</span><h3>06 · Radio Waves (ZamRock)</h3></div>
+      <p>Our brand identity. Psychedelic gradients, waveform motifs, animated EQ bars and a "tuned in" hero. Leans into ZamRock's radio/music DNA — unlike anything else on the list.</p>
+      <div class="swatches"><span class="swatch" style="background:#0b0912"></span><span class="swatch" style="background:#f23888"></span><span class="swatch" style="background:#33db98"></span></div>
+      <a class="view" href="06-radio-waves.html" target="_blank">Preview →</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a class="shot" href="01-tokyo-night.html" target="_blank"><iframe src="01-tokyo-night.html"></iframe><span class="open">Open full screen</span></a>
+    <div class="bod">
+      <div class="topline"><span class="which">layout A</span><h3>01 · Tokyo Night</h3></div>
+      <p>Clean dark standard grid. Blue accent, filter chips, stat counters. The safe, polished default.</p>
+      <a class="view" href="01-tokyo-night.html" target="_blank">Preview →</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a class="shot" href="02-sakura-mochi.html" target="_blank"><iframe src="02-sakura-mochi.html"></iframe><span class="open">Open full screen</span></a>
+    <div class="bod">
+      <div class="topline"><span class="which">layout A</span><h3>02 · Sakura Mochi</h3></div>
+      <p>Same grid, warm rose theme. Rounded, friendly, community-first.</p>
+      <a class="view" href="02-sakura-mochi.html" target="_blank">Preview →</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a class="shot" href="03-vector-terminal.html" target="_blank"><iframe src="03-vector-terminal.html"></iframe><span class="open">Open full screen</span></a>
+    <div class="bod">
+      <div class="topline"><span class="which">layout A</span><h3>03 · Vector Terminal</h3></div>
+      <p>Monospace terminal theme on the standard grid. Keep as an optional theme swatch — not the launch look.</p>
+      <a class="view" href="03-vector-terminal.html" target="_blank">Preview →</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

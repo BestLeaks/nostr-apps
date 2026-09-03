@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>nostr-zamrock — 05 Sidebar</title>
+<style>
+:root{
+  --bg:#1e1e2e; --surface:#313244; --text:#cdd6f4; --text-dim:#6c7086;
+  --accent:#89b4fa; --accent-hover:#a6d0ff; --border:#45475a; --error:#f38ba8;
+  --success:#9ece6a; --info:#88c0d0; --radius:12px;
+  --font:'Outfit',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.5}
+a{color:inherit;text-decoration:none}
+
+.layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+
+/* sidebar */
+.side{background:var(--surface);border-right:1px solid var(--border);padding:22px 0;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+.side .brand{display:flex;align-items:center;gap:10px;padding:0 20px 18px;font-size:19px;font-weight:800;letter-spacing:-.02em;border-bottom:1px solid var(--border)}
+.side .brand span{color:var(--accent)}
+.side .brand .d{width:11px;height:11px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.snav{padding:14px 12px}
+.snav .grp{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);padding:10px 10px 6px}
+.snav a{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;font-size:14px;font-weight:600;color:var(--text-dim)}
+.snav a:hover{background:var(--bg);color:var(--text)}
+.snav a.on{background:var(--accent);color:#1e1e2e}
+.snav a .cnt{margin-left:auto;font-size:11px;background:rgba(127,132,245,.15);color:var(--text-dim);padding:1px 7px;border-radius:10px}
+.snav a.on .cnt{background:rgba(30,30,46,.25);color:#1e1e2e}
+.side .foot{margin-top:auto;padding:16px 20px;font-size:12px;color:var(--text-dim);border-top:1px solid var(--border)}
+
+/* main */
+.main{padding:26px 34px}
+.top{display:flex;align-items:center;gap:18px;margin-bottom:24px}
+.search{flex:1;max-width:380px;display:flex;align-items:center;border:1px solid var(--border);border-radius:10px;background:var(--surface);padding:0 14px}
+.search input{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:inherit;font-size:14px;padding:12px 0}
+.search input::placeholder{color:var(--text-dim)}
+.top .btn{padding:10px 18px;background:var(--accent);color:#1e1e2e;border-radius:10px;font-weight:700;font-size:14px}
+.pill{font-size:12px;color:var(--text-dim);white-space:nowrap}
+
+.crumb{font-size:12px;color:var(--text-dim);margin-bottom:14px}
+.crumb b{color:var(--text)}
+
+h1.page{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:4px}
+.sub{color:var(--text-dim);font-size:14px;margin-bottom:22px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px;transition:.15s}
+.card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.card img{width:46px;height:46px;border-radius:10px;object-fit:cover;background:var(--bg)}
+.cname{display:flex;gap:12px;align-items:center}
+.cname h3{font-size:15px;font-weight:700}
+.card p{font-size:12.5px;color:var(--text-dim);flex:1}
+.meta{display:flex;flex-wrap:wrap;gap:6px}
+.meta span{font-size:11px;padding:3px 8px;border-radius:6px;background:var(--bg);border:1px solid var(--border);color:var(--text-dim)}
+.card .go{font-size:12px;font-weight:700;color:var(--accent);text-align:right}
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="side">
+    <div class="brand"><span class="d"></span>nostr<span>zamrock</span></div>
+    <div class="snav">
+      <div class="grp">Directory</div>
+      <a href="#" class="on">All apps <span class="cnt">72</span></a>
+      <a href="#">Bots <span class="cnt">14</span></a>
+      <a href="#">Runners <span class="cnt">9</span></a>
+      <a href="#">Sites <span class="cnt">6</span></a>
+      <div class="grp">Categories</div>
+      <a href="#">Microblogging <span class="cnt">28</span></a>
+      <a href="#">Chat <span class="cnt">12</span></a>
+      <a href="#">Signers <span class="cnt">8</span></a>
+      <a href="#">Video <span class="cnt">6</span></a>
+      <a href="#">Music <span class="cnt">5</span></a>
+      <a href="#">Marketplaces <span class="cnt">4</span></a>
+      <a href="#">More…</a>
+      <div class="grp">Community</div>
+      <a href="#">Submit an app</a>
+      <a href="#">Fork this site</a>
+      <a href="#">NIP-34 repo</a>
+    </div>
+    <div class="foot">nostr-zamrock · AGPL-3.0<br/>open · forkable · yours</div>
+  </aside>
+
+  <main class="main">
+    <div class="top">
+      <div class="search"><span style="color:var(--text-dim);opacity:.6">⌕</span><input placeholder="Search the directory…"/></div>
+      <span class="pill">Sorted: popularity</span>
+      <a href="#" class="btn">+ Add app</a>
+    </div>
+    <div class="crumb"><b>Directory</b> / All apps</div>
+    <h1 class="page">All apps</h1>
+    <div class="sub">72 apps across 18 categories — pick a section on the left to narrow.</div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="cname"><img src="https://cdn.satellite.earth/1a4d9d7bb7f3e481aeb5f98b6626b5b4b85d90d59f4d4b00ffa7edbf1c19d6e7.png"/><h3>Amethyst</h3></div>
+        <p>Best decentralized social network for Android.</p>
+        <div class="meta"><span>android</span><span>social</span></div><div class="go">visit →</div>
+      </div>
+      <div class="card">
+        <div class="cname"><img src="https://blossom.primal.net/0444bf8f340786d7021050a216f0401e51656d8ec3c32c04e94c8c46a1cdb5ce.png"/><h3>Primal</h3></div>
+        <p>Discover the best of Nostr.</p>
+        <div class="meta"><span>web</span><span>ios</span><span>android</span></div><div class="go">visit →</div>
+      </div>
+      <div class="card">
+        <div class="cname"><img src="https://cdn.satellite.earth/cb72c77cd77b6de306e30092eb66edf2271afb85a05852e19e94188d8b83c520.png"/><h3>Damus</h3></div>
+        <p>A popular social client for iOS.</p>
+        <div class="meta"><span>ios</span></div><div class="go">visit →</div>
+      </div>
+      <div class="card">
+        <div class="cname"><img src="https://cdn.satellite.earth/c37b7a44906ee3450b96e3b66e7320af08a5487f0e7b6b39728fdf5eb2ae57ea.png"/><h3>Alby</h3></div>
+        <p>Bitcoin + nostr companion for the web.</p>
+        <div class="meta"><span>web</span><span>signer</span></div><div class="go">visit →</div>
+      </div>
+      <div class="card">
+        <div class="cname"><img src="https://coracle-media.us-southeast-1.linodeobjects.com/logomark-light.png"/><h3>Coracle</h3></div>
+        <p>Nostr, the easy way.</p>
+        <div class="meta"><span>web</span></div><div class="go">visit →</div>
+      </div>
+      <div class="card">
+        <div class="cname"><img src="https://cdn.satellite.earth/0d16dff6557e6c0c33207dac79dfec87f3a7c43c6b5ac4dd65f1fe445ee1c3a2.png"/><h3>Nos Social</h3></div>
+        <p>Join your peers in a healthy social network.</p>
+        <div class="meta"><span>ios</span></div><div class="go">visit →</div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

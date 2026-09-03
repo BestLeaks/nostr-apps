@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>nostr-zamrock — Sakura Mochi</title>
+<style>
+:root{
+  --bg:#0b0d11; --surface:#181b24; --text:#f0b7ca; --text-dim:#6f9485;
+  --accent:#f23888; --accent-hover:#ff5a9e; --border:#2a3540; --error:#ff6aa7;
+  --success:#9ece6a; --info:#88c0d0; --radius:22px;
+  --font:'Nunito',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.55;
+  background-image:radial-gradient(1200px 500px at 50% -10%, rgba(242,56,136,.12), transparent 60%);
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+header{padding:30px 0}
+.bar{display:flex;align-items:center;gap:24px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;letter-spacing:-.02em}
+.logo svg{width:30px;height:30px}
+nav{display:flex;gap:4px;margin-left:auto}
+nav a{padding:8px 16px;border-radius:12px;font-weight:700;font-size:14px;color:var(--text-dim)}
+nav a:hover{color:var(--text);background:var(--surface)}
+nav a.on{color:var(--bg);background:var(--accent)}
+.btn{padding:10px 20px;border-radius:12px;background:var(--accent);color:#0b0d11;font-weight:800;font-size:14px;transition:.15s}
+.btn:hover{background:var(--accent-hover)}
+
+.hero{text-align:center;padding:56px 0 34px}
+.eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1px solid var(--border);padding:6px 14px;border-radius:999px;margin-bottom:22px}
+.hero h1{font-size:48px;font-weight:800;letter-spacing:-.03em;margin-bottom:16px}
+.hero h1 span{color:var(--accent)}
+.hero p{color:var(--text-dim);font-size:18px;max-width:560px;margin:0 auto}
+.search{max-width:560px;margin:30px auto 0;position:relative}
+.search input{width:100%;padding:16px 52px 16px 22px;border-radius:16px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:15px;outline:none;font-family:inherit}
+.search input:focus{border-color:var(--accent)}
+.search svg{position:absolute;right:18px;top:50%;transform:translateY(-50%);opacity:.5}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:26px 0 8px}
+.chip{padding:7px 16px;border-radius:999px;border:1px solid var(--border);background:var(--surface);font-size:13px;font-weight:700;color:var(--text-dim);cursor:pointer}
+.chip:hover{border-color:var(--accent);color:var(--text)}
+.chip.on{background:var(--accent);color:#0b0d11;border-color:var(--accent)}
+
+.stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:34px 0 8px}
+.stat{flex:1;min-width:130px;max-width:200px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;text-align:center}
+.stat b{display:block;font-size:26px;font-weight:800;color:var(--accent)}
+.stat span{font-size:12px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+
+.section{margin:44px 0}
+.shead{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.shead h2{font-size:24px;font-weight:800;letter-spacing:-.02em}
+.shead .pill{font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;background:rgba(136,192,208,.15);color:var(--info)}
+.shead a{margin-left:auto;font-size:14px;font-weight:700;color:var(--accent)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
+.card{background:linear-gradient(160deg,var(--surface),rgba(24,27,36,.6));border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:.18s;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--accent),var(--info));opacity:0;transition:.18s}
+.card:hover{transform:translateY(-4px);border-color:var(--accent)}
+.card:hover::before{opacity:1}
+.card img{width:56px;height:56px;border-radius:16px;object-fit:cover;background:var(--bg)}
+.cname{display:flex;gap:14px;align-items:center}
+.cname h3{font-size:17px;font-weight:800}
+.cname small{display:block;font-size:12px;color:var(--text-dim);font-weight:600}
+.card p{font-size:13.5px;color:var(--text-dim);flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;background:var(--bg);color:var(--text-dim);border:1px solid var(--border)}
+.tag.vector{color:var(--info);border-color:rgba(136,192,208,.4)}
+.tag.armada{color:var(--accent);border-color:rgba(242,56,136,.4)}
+
+footer{border-top:1px solid var(--border);margin-top:60px;padding:30px 0;text-align:center;color:var(--text-dim);font-size:13.5px}
+footer a{color:var(--accent);font-weight:700}
+</style>
+</head>
+<body>
+
+<header class="wrap bar">
+  <div class="logo">
+    <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="13" stroke="#f23888" stroke-width="2.4"/><path d="M10 13l6 6 6-6" stroke="#f0b7ca" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    nostr-zamrock
+  </div>
+  <nav>
+    <a href="#" class="on">Apps</a>
+    <a href="#">Bots</a>
+    <a href="#">Sites</a>
+  </nav>
+  <a href="#" class="btn">+ Add app</a>
+</header>
+
+<div class="hero wrap">
+  <span class="eyebrow">Community Nostr Directory</span>
+  <h1>Apps for the <span>open web</span></h1>
+  <p>A cozy, community-run index of Nostr apps, bots, and the sites running them. Forkable by anyone.</p>
+  <div class="search"><input placeholder="Search apps, bots, NIPs…"/>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6f9485" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+  </div>
+  <div class="chips">
+    <span class="chip on">All</span><span class="chip">Chat</span><span class="chip">Video</span>
+    <span class="chip">Signers</span><span class="chip">Music</span><span class="chip">Zaps</span><span class="chip">Relays</span>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>72</b><span>Apps</span></div>
+    <div class="stat"><b>14</b><span>Bots</span></div>
+    <div class="stat"><b>9</b><span>Runners</span></div>
+    <div class="stat"><b>6</b><span>Sites</span></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="section">
+    <div class="shead"><h2>Popular apps</h2><span class="pill">weekly picks</span><a href="#">see all 72 →</a></div>
+    <div class="grid">
+      <div class="card">
+        <div class="cname"><img src="https://cdn.satellite.earth/1a4d9d7bb7f3e481aeb5f98b6626b5b4b85d90d59f4d4b00ffa7edbf1c19d6e7.png"/><h3>Amethyst<small>@amethyst</small></h3></div>
+        <p>Bring the best decentralized social network to your Android phone.</p>
+        <div class="tags"><span class="tag">Android</span><span class="tag">Social</span></div>
+      </div>
+      <div class="card">
+        <div class="cname"><img src="https://blossom.primal.net/0444bf8f340786d7021050a216f0401e51656d8ec3c32c04e94c8c46a1cdb5ce.png"/><h3>Primal<small>@primal</small></h3></div>
+        <p>Discover the best of Nostr. Fast, beautiful, made for humans.</p>
+        <div class="tags"><span class="tag">Web</span><span class="tag">Mobile</span></div>
+      </div>
+      <div class="card">
+        <div class="cname"><img src="https://cdn.satellite.earth/cb72c77cd77b6de306e30092eb66edf2271afb85a05852e19e94188d8b83c520.png"/><h3>Damus<small>@damus</small></h3></div>
+        <p>Native, minimal, and delightful. The classic iOS Nostr client.</p>
+        <div class="tags"><span class="tag">iOS</span></div>
+      </div>
+      <div class="card">
+        <div class="cname"><img src="https://cdn.satellite.earth/c37b7a44906ee3450b96e3b66e7320af08a5487f0e7b6b39728fdf5eb2ae57ea.png"/><h3>Alby<small>@alby</small></h3></div>
+        <p>Your bitcoin and nostr companion for the web.</p>
+        <div class="tags"><span class="tag">Web</span><span class="tag">Signer</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="shead"><h2>Bots &amp; runners</h2><span class="pill">Vector / Armada</span><a href="#">see all 14 →</a></div>
+    <div class="grid">
+      <div class="card">
+        <div class="cname"><img src="https://c.nostr.media/771/b71/771b718e31eb08e2309b9c6e4d7475d42377bdc34cba8a00821c489d566fe1b1.png"/><h3>ZamRock Bot<small>radio scheduling</small></h3></div>
+        <p>Radio bot bridging Vector and Armada with live scheduling.</p>
+        <div class="tags"><span class="tag vector">Vector</span><span class="tag armada">Armada</span></div>
+      </div>
+      <div class="card">
+        <div class="cname"><img src="https://phoenix.social/img/apple-touch-icon.png"/><h3>Relay Tray<small>desktop utility</small></h3></div>
+        <p>System tray manager for all your Nostr relays.</p>
+        <div class="tags"><span class="tag">Desktop</span></div>
+      </div>
+      <div class="card">
+        <div class="cname"><img src="https://cdn.satellite.earth/c8d939904dbe80b2a36badace31914984b9459794550b1a557c43936f779af13.png"/><h3>Pyramid<small>community relay</small></h3></div>
+        <p>A relay built for organic communities. Deploy with one command.</p>
+        <div class="tags"><span class="tag">Server</span></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  nostr-zamrock · a community directory. <a href="#">Fork it</a>, add your app, ship it. / AGPL-3.0
+</footer>
+</body>
+</html>

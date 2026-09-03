@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>{% block title %}{{ config.title }}{% endblock title %}</title>
+<meta name="description" content="{{ config.description }}"/>
+{% if config.extra.theme == "sakura-mochi" %}
+<style>
+:root{
+  --bg:#0b0d11; --surface:#181b24; --text:#f0b7ca; --text-dim:#6f9485;
+  --accent:#f23888; --accent-hover:#ff5a9e; --border:#2a3540; --error:#ff6aa7;
+  --success:#9ece6a; --info:#88c0d0; --radius:22px;
+  --font:'Nunito',system-ui,sans-serif;
+}
+</style>
+{% elif config.extra.theme == "vectorapp.io" %}
+<style>
+:root{
+  --bg:#030303; --surface:#171717; --text:#e0e0e0; --text-dim:#808080;
+  --accent:#33db98; --accent-hover:#59fcb3; --border:#2a2a2a; --error:#ff2ea9;
+  --success:#9ece6a; --info:#88c0d0; --radius:10px;
+  --font:'JetBrains Mono','SF Mono','Fira Code',monospace;
+}
+</style>
+{% else %}
+<style>
+:root{
+  --bg:#1a1b26; --surface:#24253a; --text:#c0caf5; --text-dim:#565f89;
+  --accent:#7aa2f7; --accent-hover:#89b4fa; --border:#3b4261; --error:#f7768e;
+  --success:#9ece6a; --info:#88c0d0; --radius:12px;
+  --font:'Inter',system-ui,sans-serif;
+}
+</style>
+{% endif %}
+<link rel="stylesheet" href="/sass/main.css">
+</head>
+<body data-layout="{{ config.extra.layout }}">
+{% block content %}{% endblock content %}
+</body>
+</html>

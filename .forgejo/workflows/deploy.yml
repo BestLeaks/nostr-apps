@@ -1,0 +1,95 @@
+name: Build & Deploy
+
+# Host-aware workflow: one file adapts to whatever host runs it.
+#
+#   Codeberg  -> build Zola, deploy to Codeberg Pages (nostr-apps.zamrock.net)
+#   GitHub    -> build Zola, deploy to GitHub Pages (<user>.github.io/nostr-zamrock)
+#   Forgejo   -> build Zola only (we deploy via our own pipeline)
+#   other     -> build only, user adds their own Pages deploy
+#
+# Each host matches one matrix entry (distinct runner label). On hosts where a
+# given runner label doesn't exist, the job errors/skips gracefully — but the
+# host-aware deploy steps below gate the actual publish.
+#
+# Canonical site: nostr-apps.zamrock.net via Codeberg Pages.
+
+on:
+  push:
+    branches: [main, master]
+  pull_request: {}
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: github
+            runs-on: ubuntu-latest
+          - name: codeberg
+            runs-on: codeberg-small
+          - name: forgejo
+            runs-on: cyberpanel-vps
+    runs-on: ${{ matrix.runs-on }}
+    continue-on-error: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Zola site
+        uses: shalzz/zola-deploy-action@v0.19.0
+        env:
+          BUILD_DIR: .
+          BUILD_ONLY: true
+          PAGES_BRANCH: deploy-zola
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      - name: Upload Pages artifact (shared)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+        continue-on-error: true
+
+  # --- Deploy on GitHub (free Pages for fork owners) ---
+  deploy-github:
+    needs: build
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  # --- Deploy on Codeberg (canonical nostr-apps.zamrock.net) ---
+  deploy-codeberg:
+    needs: build
+    runs-on: codeberg-small
+    if: ${{ forge.ref == 'refs/heads/main' }}
+    steps:
+      - name: Deploy to Codeberg Pages
+        uses: https://codeberg.org/git-pages/action@v2
+        with:
+          site: https://nostr-apps.zamrock.net/
+          server: codeberg.page
+          token: ${{ forge.token }}
+          source: public/
+
+  # --- Forgejo: build done in shared job; deploy is manual via our pipeline ---
+  deploy-forgejo:
+    needs: build
+    runs-on: cyberpanel-vps
+    if: ${{ forge.ref == 'refs/heads/main' }}
+    steps:
+      - name: Manual deploy marker
+        run: echo "Forgejo build complete; natural copy deployed via our own pipeline."

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>nostr-zamrock — 04 Magazine</title>
+<style>
+:root{
+  --bg:#eaeaef; --surface:#ffffff; --text:#1a1b26; --text-dim:#6c6e8a;
+  --accent:#5d8fe0; --accent-hover:#7aa2f7; --border:#d5d6db; --error:#d45a7a;
+  --success:#2e7d32; --info:#3a6b8a; --radius:6px;
+  --serif:'Figtree',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--serif);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+.masthead{border-bottom:1px solid var(--border);padding:18px 0}
+.masthead .wrap{display:flex;align-items:center;gap:28px}
+.mast{font-size:26px;font-weight:800;letter-spacing:-.03em}
+.mast em{font-style:normal;color:var(--accent)}
+.masthead nav{display:flex;gap:20px;margin-left:auto}
+.masthead nav a{font-size:14px;font-weight:600;color:var(--text-dim)}
+.masthead nav a:hover{color:var(--text)}
+.count{font-size:12px;color:var(--text-dim);white-space:nowrap}
+
+.lede{padding:44px 0 26px;text-align:center}
+.lede h1{font-size:40px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.lede h1 em{font-style:normal;color:var(--accent)}
+.lede p{color:var(--text-dim);margin:14px auto 0;max-width:560px;font-size:16px}
+
+/* ribbon divider */
+.ribbon{display:flex;align-items:center;gap:16px;margin:34px 0 6px}
+.ribbon::before,.ribbon::after{content:"";flex:1;height:1px;background:var(--border)}
+.ribbon span{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim)}
+
+.feature{display:grid;grid-template-columns:1.2fr 1fr;gap:26px;margin-top:24px;align-items:stretch}
+.feature-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
+.feat-media{height:230px;background:linear-gradient(135deg,#5d8fe0,#7aa2f7);display:flex;align-items:center;justify-content:center}
+.feat-media img{width:110px;height:110px;border-radius:22px;box-shadow:0 14px 40px rgba(0,0,0,.3);background:#fff;object-fit:cover}
+.feat-body{padding:22px}
+.feat-body .kicker{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.feat-body h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin:8px 0 8px}
+.feat-body p{color:var(--text-dim);font-size:14.5px}
+.feat-body .meta{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.feat-body .meta span{font-size:12px;font-weight:600;padding:4px 10px;border:1px solid var(--border);border-radius:4px;color:var(--text-dim)}
+
+/* list rows */
+.rows{display:flex;flex-direction:column;gap:1px;background:var(--border)}
+.row{background:var(--surface);padding:18px 22px;display:flex;align-items:center;gap:18px}
+.row img{width:44px;height:44px;border-radius:10px;object-fit:cover;background:var(--bg)}
+.row .info{flex:1}
+.row .info h3{font-size:16px;font-weight:700}
+.row .info p{font-size:13px;color:var(--text-dim)}
+.row .adr{font-size:12px;color:var(--text-dim);white-space:nowrap}
+.row .go{color:var(--accent);font-weight:700;font-size:16px}
+
+/* two-col category show */
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin:10px 0}
+.cat h3{font-size:20px;font-weight:800;letter-spacing:-.02em;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.cat h3 .n{font-size:12px;color:var(--accent);font-weight:800;background:rgba(93,143,224,.12);padding:2px 8px;border-radius:4px}
+.cat .row{border:1px solid var(--border);border-radius:6px;margin-bottom:10px;background:var(--surface)}
+
+footer{border-top:1px solid var(--border);margin-top:60px;padding:30px 0;text-align:center;color:var(--text-dim);font-size:13px}
+footer a{color:var(--accent);font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="wrap">
+    <div class="mast">nostr<em>zamrock</em></div>
+    <nav><a href="#">Apps</a><a href="#">Bots</a><a href="#">Runners</a><a href="#">Sites</a></nav>
+    <span class="count">72 apps · updated live</span>
+  </div>
+</div>
+
+<div class="lede wrap">
+  <h1>The directory as an <em>open zine</em></h1>
+  <p>A curated, editorial take on the Nostr app landscape — a front page with featured picks, then the catalog below. Owned by everyone, forkable by anyone.</p>
+</div>
+
+<div class="ribbon wrap"><span>Featured this week</span></div>
+
+<div class="wrap feature">
+  <div class="feature-card">
+    <div class="feat-media"><img src="https://cdn.satellite.earth/1a4d9d7bb7f3e481aeb5f98b6626b5b4b85d90d59f4d4b00ffa7edbf1c19d6e7.png"/></div>
+    <div class="feat-body">
+      <div class="kicker">Editor's pick</div>
+      <h2>Amethyst</h2>
+      <p>The best decentralized social network for Android — rethought the look while keeping the grid.</p>
+      <div class="meta"><span>Android</span><span>Social</span><span>Photos</span></div>
+    </div>
+  </div>
+  <div class="rows">
+    <a class="row" href="#">
+      <img src="https://blossom.primal.net/0444bf8f340786d7021050a216f0401e51656d8ec3c32c04e94c8c46a1cdb5ce.png"/>
+      <div class="info"><h3>Primal</h3><p>Discover the best of Nostr.</p></div>
+      <span class="adr">web · ios</span><span class="go">→</span>
+    </a>
+    <a class="row" href="#">
+      <img src="https://cdn.satellite.earth/cb72c77cd77b6de306e30092eb66edf2271afb85a05852e19e94188d8b83c520.png"/>
+      <div class="info"><h3>Damus</h3><p>The classic iOS Nostr client.</p></div>
+      <span class="adr">ios</span><span class="go">→</span>
+    </a>
+    <a class="row" href="#">
+      <img src="https://cdn.satellite.earth/c37b7a44906ee3450b96e3b66e7320af08a5487f0e7b6b39728fdf5eb2ae57ea.png"/>
+      <div class="info"><h3>Alby</h3><p>Your bitcoin + nostr companion.</p></div>
+      <span class="adr">web</span><span class="go">→</span>
+    </a>
+    <a class="row" href="#">
+      <img src="https://coracle-media.us-southeast-1.linodeobjects.com/logomark-light.png"/>
+      <div class="info"><h3>Coracle</h3><p>Nostr, the easy way.</p></div>
+      <span class="adr">web</span><span class="go">→</span>
+    </a>
+  </div>
+</div>
+
+<div class="ribbon wrap"><span>The catalog</span></div>
+
+<div class="wrap cats">
+  <div class="cat">
+    <h3>Bots <span class="n">14</span></h3>
+    <div class="row">
+      <img src="https://c.nostr.media/771/b71/771b718e31eb08e2309b9c6e4d7475d42377bdc34cba8a00821c489d566fe1b1.png"/>
+      <div class="info"><h3>ZamRock Bot</h3><p>Radio bot bridging Vector + Armada.</p></div>
+      <span class="go">→</span>
+    </div>
+    <div class="row">
+      <img src="https://phoenix.social/img/apple-touch-icon.png"/>
+      <div class="info"><h3>Relay Tray</h3><p>System tray relay manager.</p></div>
+      <span class="go">→</span>
+    </div>
+    <div class="row">
+      <img src="https://cdn.satellite.earth/c8d939904dbe80b2a36badace31914984b9459794550b1a557c43936f779af13.png"/>
+      <div class="info"><h3>Pyramid</h3><p>Community relay, easy deploy.</p></div>
+      <span class="go">→</span>
+    </div>
+  </div>
+  <div class="cat">
+    <h3>Runners &amp; sites <span class="n">9</span></h3>
+    <div class="row">
+      <img src="https://blossom.primal.net/0444bf8f340786d7021050a216f0401e51656d8ec3c32c04e94c8c46a1cdb5ce.png"/>
+      <div class="info"><h3>nostr-zamrock.net</h3><p>This site — the canonical instance.</p></div>
+      <span class="go">→</span>
+    </div>
+    <div class="row">
+      <img src="https://cdn.satellite.earth/cb72c77cd77b6de306e30092eb66edf2271afb85a05852e19e94188d8b83c520.png"/>
+      <div class="info"><h3>johnny's mirror</h3><p>Community fork on GitHub Pages.</p></div>
+      <span class="go">→</span>
+    </div>
+    <div class="row">
+      <img src="https://cdn.satellite.earth/c37b7a44906ee3450b96e3b66e7320af08a5487f0e7b6b39728fdf5eb2ae57ea.png"/>
+      <div class="info"><h3>loop relay</h3><p>Instance running the full catalog.</p></div>
+      <span class="go">→</span>
+    </div>
+  </div>
+</div>
+
+<footer>nostr-zamrock · an open zine for an open web. <a href="#">Fork &amp; run your own</a> / AGPL-3.0</footer>
+</body>
+</html>

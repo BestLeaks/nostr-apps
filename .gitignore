@@ -1,0 +1,6 @@
+# Zola
+/public
+
+# Editors
+.DS_Store
+*.swp

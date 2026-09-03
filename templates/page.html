@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} — {{ config.title }}{% endblock title %}
+
+{% block content %}
+<header class="sitehead">
+  <div class="bar">
+    <div class="brand"><a href="{{ config.base_url }}">nostr<span>zamrock</span></a></div>
+    <nav class="navlinks"><a href="{{ config.base_url }}#apps">Apps</a><a href="{{ config.base_url }}#bots">Bots</a></nav>
+    <a class="btn" href="{{ config.extra.repo }}/new/main/content/apps">+ Add app</a>
+  </div>
+</header>
+
+<main class="content app">
+  <div class="app-meta">
+    <img src="{{ page.extra.thumb }}" alt="" class="logo">
+    <div>
+      <h1>{{ page.title }}</h1>
+      {% if page.extra.npub %}
+      <p class="by">by <span class="npub">{{ page.extra.npub | truncate(length=16, end="…") }}</span></p>
+      {% endif %}
+      <p class="desc">{{ page.description }}</p>
+    </div>
+    <a class="btn visit" href="{{ page.extra.url }}" target="_blank">Visit</a>
+  </div>
+
+  {% if page.extra.source %}
+  <div class="item-section">
+    <h4>Source</h4>
+    <a href="{{ page.extra.source }}" target="_blank">{{ page.extra.source }}</a>
+  </div>
+  {% endif %}
+
+  {% if page.extra.platforms %}
+  <div class="item-section">
+    <h4>Platforms</h4>
+    <div class="meta">{% for p in page.extra.platforms %}<span>{{ p }}</span>{% endfor %}</div>
+  </div>
+  {% endif %}
+
+  {% if page.extra.features %}
+  <div class="item-section">
+    <h4>Highlights</h4>
+    <ul>
+      {% for f in page.extra.features %}<li>{{ f }}</li>{% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  {% if page.extra.gallery %}
+  <div class="item-section">
+    <h4>Screenshots</h4>
+    <div class="gallery">
+      {% for img in page.extra.gallery %}
+        <img src="{{ img }}" loading="lazy">
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="content-body">{{ page.content | safe }}</div>
+</main>
+{% endblock content %}
