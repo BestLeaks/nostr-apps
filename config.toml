@@ -13,7 +13,7 @@ description = "An open, community-run directory of Nostr apps, bots, and the sit
 [extra]
 layout = "advanced"
 theme = "tokyo-night"
-repo = "https://git.zamrock.net/ZamRock-Radio/nostr-zamrock"
+repo = "https://codeberg.org/ZamRock-Radio/nostr-apps-deploy"
 license = "AGPL-3.0"
 
 # --- Taxonomies ---

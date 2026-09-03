@@ -48,7 +48,7 @@ jobs:
       - name: Deploy to Codeberg Pages
         uses: https://codeberg.org/git-pages/action@v2
         with:
-          site: https://${{ forge.repository_owner }}.codeberg.page/Nostr-Apps/
+          site: https://ZamRock-Radio.codeberg.page/nostr-apps-deploy/
           token: ${{ forge.token }}
           source: public/
 
