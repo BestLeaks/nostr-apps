@@ -12,7 +12,7 @@ platforms = [
 ]
 
 npub = "npub1w4uswmv6lu9yel005l3qgheysmr7tk9uvwluddznju3nuxalevvs2d0jr5"
-thumb = "https://www.google.com/s2/favicons?domain=github.com&sz=256"
+thumb = "https://blob.satellite.earth/f47cc0402578f70291b0623b55247d21b26ac3a636ec26e46d8350a85107e69c"
 url = "https://github.com/greenart7c3/Amber/releases"
 gallery = []
 features = [
