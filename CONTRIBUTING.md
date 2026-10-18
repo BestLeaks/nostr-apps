@@ -3,9 +3,9 @@
 Adding an app, bot, or runner to nostr-zamrock is a **one-file change**. No
 build tools, no local setup, no approvals.
 
-## The shortest path (GitHub)
+## The steps
 
-1. **Fork** this repo on GitHub.
+1. **Fork** this repo.
 2. **Add one file** — copy `content/apps/_template.md` to
    `content/apps/<your-app>/index.md` and fill it in.
 3. **Open a pull request.** Done.
