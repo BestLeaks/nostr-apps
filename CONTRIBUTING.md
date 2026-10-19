@@ -41,3 +41,4 @@ You may make a PR/issue/etc in any of the following repos
 https://git.zamrock.net/BestLaw/nostr-apps-deploy/src/branch/main/CONTRIBUTING.md - ideal
 https://github.com/BestLeaks/nostr-apps
 https://codeberg.org/BestLaw/nostr-apps-zamrock
+https://gitworkshop.dev/npub1w2hj97prgn85nsyr3hv3knxr2dgkfpscflwrhfac5j9u373u0whqpg5srx/relay.ngit.dev/nostr-apps
