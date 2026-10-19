@@ -69,6 +69,41 @@ img{display:block}
 .item-section li{margin:4px 0}
 .item-section .meta{display:flex;gap:8px;flex-wrap:wrap}
 .item-section .meta span{font-size:12px;padding:4px 10px;border-radius:6px;background:var(--surface);border:1px solid var(--border);color:var(--text-dim)}
+.item-section .relayUrls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.item-section .relayUrls span {
+    font-size: 13px;
+    font-family: monospace;
+    padding: 6px 12px;
+    border-radius: 999px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255, 191, 0, 0.15),
+        rgba(255, 140, 0, 0.25)
+    );
+
+    color: var(--text);
+    border: 1px solid rgba(255, 191, 0, 0.4);
+
+    box-shadow:
+        0 0 0 1px rgba(255, 191, 0, 0.1),
+        0 2px 8px rgba(255, 191, 0, 0.15);
+
+    transition: all 0.2s ease;
+}
+
+.item-section .relayUrls span:hover {
+    transform: translateY(-2px);
+    border-color: #ffbf00;
+    box-shadow:
+        0 0 12px rgba(255, 191, 0, 0.35),
+        0 4px 14px rgba(255, 191, 0, 0.25);
+}
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
 .gallery img{width:100%;border-radius:10px;border:1px solid var(--border)}
 

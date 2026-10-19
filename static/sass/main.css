@@ -69,6 +69,40 @@ img{display:block}
 .item-section li{margin:4px 0}
 .item-section .meta{display:flex;gap:8px;flex-wrap:wrap}
 .item-section .meta span{font-size:12px;padding:4px 10px;border-radius:6px;background:var(--surface);border:1px solid var(--border);color:var(--text-dim)}
+.item-section .relayUrls span::before {
+    content: "◉";
+    color: #4a90e2;
+    margin-right: 6px;
+}
+.item-section .relayUrls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.item-section .relayUrls span {
+    font-family: monospace;
+    font-size: 13px;
+    font-weight: 500;
+
+    padding: 6px 12px;
+    border-radius: 8px;
+
+    background: rgba(74, 144, 226, 0.15);
+    border: 1px solid rgba(74, 144, 226, 0.4);
+    color: #7db4ff;
+
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.15);
+
+    transition: all 0.2s ease;
+}
+
+.item-section .relayUrls span:hover {
+    background: rgba(74, 144, 226, 0.25);
+    border-color: #4a90e2;
+    box-shadow: 0 0 16px rgba(74, 144, 226, 0.35);
+    transform: translateY(-1px);
+}
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
 .gallery img{width:100%;border-radius:10px;border:1px solid var(--border)}
 
