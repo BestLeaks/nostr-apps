@@ -3,7 +3,7 @@
 #
 # Layouts & themes are switchable. Set these to pick the default;
 # individual users can override at build time.
-base_url = "https://nostr-apps.zamrock.net"
+base_url = "/"
 title = "nostr-zamrock"
 description = "An open, community-run directory of Nostr apps, bots, and the sites running them."
 
