@@ -32,10 +32,12 @@ Once merged, a bot or maintainer runs a quick sanity check and it's live.
 - Keep `description` to one sentence.
 - Thumbnails should be square and reasonably small.
 - Don't add files or fields beyond the template — it keeps PRs clean and
-  buildable.
+  buildable. If you believe an adjustment should be made please create an issue or discussion
 
 ## Preferred hosts
 
-PRs are easiest on **GitHub** (our Forgejo and GitWorkshop mirrors auto-sync).
-If you run your own instance of this directory, add it to the **Sites** section
-too — the more sources the public has, the better.
+You may make a PR/issue/etc in any of the following repos
+
+https://git.zamrock.net/BestLaw/nostr-apps-deploy/src/branch/main/CONTRIBUTING.md - ideal
+https://github.com/BestLeaks/nostr-apps
+https://codeberg.org/BestLaw/nostr-apps-zamrock

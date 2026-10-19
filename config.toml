@@ -13,7 +13,7 @@ description = "An open, community-run directory of Nostr apps, bots, and the sit
 [extra]
 layout = "advanced"
 theme = "tokyo-night"
-repo = "https://codeberg.org/ZamRock-Radio/nostr-apps-deploy/src/branch/main/CONTRIBUTING.md"
+repo = "https://git.zamrock.net/BestLaw/nostr-apps-deploy/src/branch/main/CONTRIBUTING.md"
 license = "AGPL-3.0"
 
 # --- SEO / social cards ---
