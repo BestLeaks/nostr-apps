@@ -1,0 +1,99 @@
+{
+  "result": {
+    "items": [
+      {
+        "id": "d5ff5722-03c4-485b-80f9-bfe45d060e5f",
+        "number": 6,
+        "metadata": {
+          "created_on": "2026-09-03T17:20:55.533977Z",
+          "source": "wrangler",
+          "author_id": "ffd06126532ed701cdaa16a353d47e9d",
+          "author_email": "",
+          "has_preview": true
+        },
+        "annotations": {
+          "workers/triggered_by": "version_upload"
+        }
+      },
+      {
+        "id": "b2957cd0-64af-4a43-bd84-6963dcf0efb9",
+        "number": 5,
+        "metadata": {
+          "created_on": "2026-09-03T15:20:12.546823Z",
+          "source": "wrangler",
+          "author_id": "ffd06126532ed701cdaa16a353d47e9d",
+          "author_email": "",
+          "has_preview": true
+        },
+        "annotations": {
+          "workers/triggered_by": "version_upload"
+        }
+      },
+      {
+        "id": "bed0ab00-a143-4618-bb01-2beb996f2c7c",
+        "number": 4,
+        "metadata": {
+          "created_on": "2026-09-03T14:49:18.094799Z",
+          "source": "api",
+          "author_id": "ffd06126532ed701cdaa16a353d47e9d",
+          "author_email": "",
+          "has_preview": true
+        },
+        "annotations": {
+          "workers/triggered_by": "upload"
+        }
+      },
+      {
+        "id": "2ae4e697-20f1-41ec-acef-3ed347759894",
+        "number": 3,
+        "metadata": {
+          "created_on": "2026-09-03T14:49:11.271363Z",
+          "source": "wrangler",
+          "author_id": "ffd06126532ed701cdaa16a353d47e9d",
+          "author_email": "",
+          "has_preview": true
+        },
+        "annotations": {
+          "workers/triggered_by": "upload"
+        }
+      },
+      {
+        "id": "062cc0ce-0cf4-4d2c-acb1-4035f8c21a1d",
+        "number": 2,
+        "metadata": {
+          "created_on": "2026-09-03T14:48:26.800768Z",
+          "source": "wrangler",
+          "author_id": "ffd06126532ed701cdaa16a353d47e9d",
+          "author_email": "",
+          "has_preview": true
+        },
+        "annotations": {
+          "workers/triggered_by": "upload"
+        }
+      },
+      {
+        "id": "5b7798d8-eba1-4c5d-b7b8-b3d3133f10ef",
+        "number": 1,
+        "metadata": {
+          "created_on": "2026-09-03T14:47:44.472646Z",
+          "source": "wrangler",
+          "author_id": "ffd06126532ed701cdaa16a353d47e9d",
+          "author_email": "",
+          "has_preview": true
+        },
+        "annotations": {
+          "workers/triggered_by": "upload"
+        }
+      }
+    ]
+  },
+  "success": true,
+  "errors": null,
+  "messages": null,
+  "result_info": {
+    "page": 1,
+    "per_page": 10,
+    "count": 6,
+    "total_count": 6
+  }
+}
