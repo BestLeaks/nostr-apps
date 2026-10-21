@@ -1,0 +1,7 @@
+{
+	"name": "nostr-apps-proxy",
+	"compatibility_date": "2026-09-03",
+	"main": "src/index.js",
+	"workers_dev": false,
+	"account_id": "4a51fcd67387bb14770734f984eb1521"
+}

@@ -1,0 +1,35 @@
+{
+  "result": [
+    {
+      "id": "2ba03ed1c63225afdc34c8e44dc5a10fdac55969",
+      "zone_id": "6f1687f9fe37cb610116f8f88a859e6b",
+      "zone_name": "zamrock.net",
+      "hostname": "nostr.zamrock.net",
+      "service": "listen",
+      "environment": "production",
+      "cert_id": "db5df82d-9afe-4844-be81-b215f6e3f7d9",
+      "previews_enabled": false,
+      "enabled": true
+    },
+    {
+      "id": "790167c95f31431412c703866433757be9224420",
+      "zone_id": "6f1687f9fe37cb610116f8f88a859e6b",
+      "zone_name": "zamrock.net",
+      "hostname": "nostr-apps.zamrock.net",
+      "service": "nostr-apps-proxy",
+      "environment": "production",
+      "cert_id": "3b5cd28b-3435-468c-bbbd-31a6e538c951",
+      "previews_enabled": false,
+      "enabled": true
+    }
+  ],
+  "success": true,
+  "errors": null,
+  "messages": null,
+  "result_info": {
+    "page": 1,
+    "per_page": 2,
+    "count": 2,
+    "total_count": 2
+  }
+}
