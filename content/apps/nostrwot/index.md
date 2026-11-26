@@ -11,8 +11,8 @@ platforms = [
   "web",
 ]
 
-thumb = "https://proxy.mega-utilities.com/favicon/nostr-wot.com"
-url = "https://nostr-wot.com/"
+thumb = "https://proxy.mega-utilities.com/favicon/nostrwot.com"
+url = "https://nostrwot.com/"
 gallery = []
 features = [
   "Nostr authenticator (never enter your nsec into apps)",
