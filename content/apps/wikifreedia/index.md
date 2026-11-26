@@ -10,7 +10,7 @@ platforms = [
 ]
 
 source = "https://github.com/pablof7z/wiki"
-thumb = "https://www.google.com/s2/favicons?domain=wikifreedia.xyz&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/wikifreedia.xyz"
 url = "https://wikifreedia.xyz/"
 gallery = []
 features = [

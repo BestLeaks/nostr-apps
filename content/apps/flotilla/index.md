@@ -15,7 +15,7 @@ platforms = [
 
 npub = "npub1jlrs53pkdfjnts29kveljul2sm0actt6n8dxrrzqcersttvcuv3qdjynqn"
 source = "https://github.com/max21dev/groups"
-thumb = "https://www.google.com/s2/favicons?domain=flotilla.social&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/flotilla.social"
 url = "https://flotilla.social"
 gallery = []
 features = [

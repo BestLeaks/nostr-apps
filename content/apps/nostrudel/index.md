@@ -15,7 +15,7 @@ platforms = [
 ]
 
 npub = "npub1ye5ptcxfyyxl5vjvdjar2ua3f0hynkjzpx552mu5snj3qmx5pzjscpknpr"
-thumb = "https://www.google.com/s2/favicons?domain=nostrudel.ninja&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/nostrudel.ninja"
 url = "https://nostrudel.ninja/"
 gallery = []
 features = [

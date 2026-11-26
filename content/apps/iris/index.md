@@ -13,7 +13,7 @@ platforms = [
 
 npub = "npub1wnwwcv0a8wx0m9stck34ajlwhzuua68ts8mw3kjvspn42dcfyjxs4n95l8"
 source = "https://github.com/irislib/iris-client"
-thumb = "https://www.google.com/s2/favicons?domain=iris.to&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/iris.to"
 url = "https://iris.to"
 gallery = []
 features = [

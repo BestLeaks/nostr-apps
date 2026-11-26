@@ -12,7 +12,7 @@ platforms = [
 ]
 
 npub = "npub1sjcvg64knxkrt6ev52rywzu9uzqakgy8ehhk8yezxmpewsthst6sw3jqcw"
-thumb = "https://www.google.com/s2/favicons?domain=lumilumi.app&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/lumilumi.app"
 url = "https://lumilumi.app/"
 gallery = []
 features = [

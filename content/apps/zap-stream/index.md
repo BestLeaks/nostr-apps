@@ -15,7 +15,7 @@ platforms = [
 ]
 
 npub = "npub1v0lxxxxutpvrelsksy8cdhgfux9l6a42hsj2qzquu2zk7vc9qnkszrqj49"
-thumb = "https://www.google.com/s2/favicons?domain=zap.stream&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/zap.stream"
 url = "https://zap.stream/"
 gallery = []
 features = [

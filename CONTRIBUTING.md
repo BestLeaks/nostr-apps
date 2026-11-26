@@ -36,11 +36,15 @@ Once merged, a bot or maintainer runs a quick sanity check and it's live.
 
 ## Preferred hosts
 
-You may make a PR/issue/etc in any of the following repos
+You may make a PR/issue/etc in any of the following repos. The git.zamrock.net repo is the preffered location to PR however you may use whichever platform you prefer.
 
-https://git.zamrock.net/BestLaw/nostr-apps-deploy/src/branch/main/CONTRIBUTING.md - ideal
+https://git.zamrock.net/BestLaw/nostr-apps-deploy/src/branch/main/CONTRIBUTING.md
+
 https://github.com/BestLeaks/nostr-apps
+
 https://codeberg.org/BestLaw/nostr-apps-zamrock
+
+https://gitlab.com/BestLeaks/nostr-app
 
 The Nostr copy of this repo is this git remote:
 

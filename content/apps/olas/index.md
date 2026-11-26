@@ -15,7 +15,7 @@ platforms = [
 ]
 
 npub = "npub1l2vyh47mk2p0qlsku7hg0vn29faehy9hy34ygaclpn66ukqp3afqutajft"
-thumb = "https://www.google.com/s2/favicons?domain=olas.app&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/olas.app"
 url = "https://olas.app/"
 gallery = []
 features = [

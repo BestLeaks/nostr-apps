@@ -11,7 +11,7 @@ platforms = [
   "web",
 ]
 
-thumb = "https://www.google.com/s2/favicons?domain=nostr-wot.com&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/nostr-wot.com"
 url = "https://nostr-wot.com/"
 gallery = []
 features = [

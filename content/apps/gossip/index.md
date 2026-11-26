@@ -14,7 +14,7 @@ platforms = [
 
 npub = "npub1acg6thl5psv62405rljzkj8spesceyfz2c32udakc2ak0dmvfeyse9p35c"
 source = "https://github.com/mikedilger/gossip"
-thumb = "https://www.google.com/s2/favicons?domain=github.com&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/github.com"
 url = "https://github.com/mikedilger/gossip/releases"
 gallery = []
 features = [

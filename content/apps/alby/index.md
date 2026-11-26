@@ -12,7 +12,7 @@ platforms = [
 ]
 
 npub = "npub1getal6ykt05fsz5nqu4uld09nfj3y3qxmv8crys4aeut53unfvlqr80nfm"
-thumb = "https://www.google.com/s2/favicons?domain=getalby.com&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/getalby.com"
 url = "https://getalby.com/"
 gallery = []
 features = [

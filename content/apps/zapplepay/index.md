@@ -13,7 +13,7 @@ platforms = [
 
 npub = "npub1u8lnhlw5usp3t9vmpz60ejpyt649z33hu82wc2hpv6m5xdqmuxhs46turz"
 source = "https://github.com/benthecarman/zapple-pay-backend"
-thumb = "https://www.google.com/s2/favicons?domain=zapplepay.com&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/zapplepay.com"
 url = "https://www.zapplepay.com/"
 gallery = []
 features = [

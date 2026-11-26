@@ -12,7 +12,7 @@ platforms = [
 ]
 
 npub = "npub1mygerccwqpzyh9pvp6pv44rskv40zutkfs38t0hqhkvnwlhagp6s3psn5p"
-thumb = "https://www.google.com/s2/favicons?domain=nostrocket.org&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/nostrocket.org"
 url = "https://nostrocket.org/rockets"
 gallery = []
 features = [

@@ -12,7 +12,7 @@ platforms = [
 ]
 
 npub = "npub107jk7htfv243u0x5ynn43scq9wrxtaasmrwwa8lfu2ydwag6cx2quqncxg"
-thumb = "https://www.google.com/s2/favicons?domain=emojito.meme&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/emojito.meme"
 url = "https://emojito.meme/"
 gallery = []
 features = [

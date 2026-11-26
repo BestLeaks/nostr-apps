@@ -14,7 +14,7 @@ platforms = [
 
 npub = "npub107jk7htfv243u0x5ynn43scq9wrxtaasmrwwa8lfu2ydwag6cx2quqncxg"
 source = "https://git.v0l.io/verbiricha/chachi"
-thumb = "https://www.google.com/s2/favicons?domain=chachi.chat&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/chachi.chat"
 url = "https://chachi.chat"
 gallery = []
 features = [

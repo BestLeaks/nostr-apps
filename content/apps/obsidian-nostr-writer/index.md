@@ -13,7 +13,7 @@ platforms = [
 
 npub = "npub10a8kw2hsevhfycl4yhtg7vzrcpwpu7s6med27juf4lzqpsvy270qrh8zkw"
 source = "https://github.com/jamesmagoo/nostr-writer"
-thumb = "https://www.google.com/s2/favicons?domain=obsidian.md&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/obsidian.md"
 url = "https://obsidian.md/plugins?search=nostr#"
 gallery = []
 features = [

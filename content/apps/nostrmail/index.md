@@ -15,7 +15,7 @@ platforms = [
 
 npub = "npub1kg4sdvz3l4fr99n2jdz2vdxe2mpacva87hkdetv76ywacsfq5leqquw5te"
 source = "https://github.com/nogringo/nostr-mail-client"
-thumb = "https://www.google.com/s2/favicons?domain=nostrmail.org&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/nostrmail.org"
 url = "https://nostrmail.org"
 gallery = []
 features = []

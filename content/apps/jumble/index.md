@@ -14,7 +14,7 @@ platforms = [
 ]
 
 npub = "npub1syjmjy0dp62dhccq3g97fr87tngvpvzey08llyt6ul58m2zqpzps9wf6wl"
-thumb = "https://www.google.com/s2/favicons?domain=jumble.social&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/jumble.social"
 url = "https://jumble.social/"
 gallery = []
 features = [

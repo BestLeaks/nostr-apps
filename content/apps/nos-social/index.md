@@ -13,7 +13,7 @@ platforms = [
 
 npub = "npub1pu3vqm4vzqpxsnhuc684dp2qaq6z69sf65yte4p39spcucv5lzmqswtfch"
 source = "https://github.com/planetary-social/nos"
-thumb = "https://www.google.com/s2/favicons?domain=nos.social&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/nos.social"
 url = "https://www.nos.social/"
 gallery = []
 features = [

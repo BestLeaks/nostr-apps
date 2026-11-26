@@ -12,7 +12,7 @@ platforms = [
 ]
 
 npub = "npub1a3um269aaf3u5cy37kuykrrrnsg2pyv7za06pxjduv25lq5sdujs2qmdj6"
-thumb = "https://www.google.com/s2/favicons?domain=plebeian.market&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/plebeian.market"
 url = "https://plebeian.market/"
 gallery = []
 features = [

@@ -14,7 +14,7 @@ relayUrls = [
 ]
 
 author = "Soapbox"
-thumb = "https://www.google.com/s2/favicons?domain=relay.ditto.pub&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/relay.ditto.pub"
 url = "https://relay.ditto.pub/"
 gallery = []
 features = [

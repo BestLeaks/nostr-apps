@@ -13,7 +13,7 @@ platforms = [
 
 npub = "npub1zfss807aer0j26mwp2la0ume0jqde3823rmu97ra6sgyyg956e0s6xw445"
 source = "https://github.com/lumehq/coop"
-thumb = "https://www.google.com/s2/favicons?domain=github.com&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/github.com"
 url = "https://github.com/lumehq/coop/releases"
 gallery = []
 features = [

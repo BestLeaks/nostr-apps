@@ -12,7 +12,7 @@ platforms = [
 ]
 
 npub = "npub1arkn0xxxll4llgy9qxkrncn3vc4l69s0dz8ef3zadykcwe7ax3dqrrh43w"
-thumb = "https://www.google.com/s2/favicons?domain=go.yondar.me&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/go.yondar.me"
 url = "https://go.yondar.me/"
 gallery = []
 features = [

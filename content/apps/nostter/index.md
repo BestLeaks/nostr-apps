@@ -13,7 +13,7 @@ platforms = [
 
 npub = "npub1s02jksmr6tgmcksf3hnmue7pyzlm0sxwarh7lk8tdeprw2hjg6ysp7fxtw"
 source = "https://github.com/SnowCait/nostter"
-thumb = "https://www.google.com/s2/favicons?domain=nostter.app&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/nostter.app"
 url = "https://nostter.app/"
 gallery = []
 features = [

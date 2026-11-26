@@ -20,7 +20,7 @@ platforms = [
 
 npub = "npub1yzvxlwp7wawed5vgefwfmugvumtp8c8t0etk3g8sky4n0ndvyxesnxrf8q"
 source = "https://github.com/orgs/YakiHonne/repositories"
-thumb = "https://www.google.com/s2/favicons?domain=yakihonne.com&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/yakihonne.com"
 url = "https://yakihonne.com"
 gallery = []
 features = [

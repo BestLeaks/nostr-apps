@@ -13,7 +13,7 @@ platforms = [
 
 npub = "npub1klr0dy2ul2dx9llk58czvpx73rprcmrvd5dc7ck8esg8f8es06qs427gxc"
 source = "https://git.v0l.io/florian/nostr-slideshow"
-thumb = "https://www.google.com/s2/favicons?domain=slidestr.net&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/slidestr.net"
 url = "https://slidestr.net/"
 gallery = []
 features = [

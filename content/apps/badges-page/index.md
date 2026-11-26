@@ -13,7 +13,7 @@ platforms = [
 
 npub = "npub107jk7htfv243u0x5ynn43scq9wrxtaasmrwwa8lfu2ydwag6cx2quqncxg"
 source = "https://github.com/verbiricha/badges"
-thumb = "https://www.google.com/s2/favicons?domain=badges.page&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/badges.page"
 url = "https://badges.page/"
 gallery = []
 features = [

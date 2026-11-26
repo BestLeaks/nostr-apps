@@ -11,7 +11,7 @@ platforms = [
 
 npub = "npub180cvv07tjdrrgpa0j7j7tmnyl2yr6yr7l8j4s3evf6u64th6gkwsyjh6w6"
 source = "https://git.njump.me/wikistr"
-thumb = "https://www.google.com/s2/favicons?domain=wikistr.com&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/wikistr.com"
 url = "https://wikistr.com/"
 gallery = []
 features = [

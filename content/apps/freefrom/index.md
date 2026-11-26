@@ -13,7 +13,7 @@ platforms = [
 ]
 
 npub = "npub1sctag667a7np6p6ety2up94pnwwxhd2ep8n8afr2gtr47cwd4ewsvdmmjm"
-thumb = "https://www.google.com/s2/favicons?domain=freefrom.space&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/freefrom.space"
 url = "https://freefrom.space/"
 gallery = []
 features = [

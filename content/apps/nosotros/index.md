@@ -13,7 +13,7 @@ platforms = [
 
 npub = "nprofile1qy28wumn8ghj7un9d3shjtnyv9kh2uewd9hszrthwden5te0dehhxtnvdakqzxrhwden5te0wfjkccte9ehx7um0w3ex7uewv9c8qqgswaehxw309ahx7um5wgh8w6twv5qzp3nq8v83enlvvfwecz9h20j0wa827lgu7fmfygcjtd0afknjsqv7zldp6m"
 source = "https://github.com/cesardeazevedo/nosotros"
-thumb = "https://www.google.com/s2/favicons?domain=nosotros.app&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/nosotros.app"
 url = "https://nosotros.app"
 gallery = []
 features = [

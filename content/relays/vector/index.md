@@ -13,7 +13,7 @@ relayUrls = [
 ]
 
 author = "JSKitty"
-thumb = "https://www.google.com/s2/favicons?domain=jskitty.com/nostr&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/jskitty.com/nostr"
 url = "https://jskitty.com/nostr/"
 source = "https://github.com/VectorPrivacy/magnitude-relay"
 gallery = []

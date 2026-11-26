@@ -14,7 +14,7 @@ platforms = [
 
 npub = "npub1gzuushllat7pet0ccv9yuhygvc8ldeyhrgxuwg744dn5khnpk3gs3ea5ds"
 source = "https://github.com/gzuuus/linktr-nostr"
-thumb = "https://www.google.com/s2/favicons?domain=nostree.me&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/nostree.me"
 url = "https://nostree.me/"
 gallery = []
 features = [

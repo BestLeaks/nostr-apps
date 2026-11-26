@@ -12,7 +12,7 @@ platforms = [
 ]
 
 npub = "npub1n0sturny6w9zn2wwexju3m6asu7zh7jnv2jt2kx6tlmfhs7thq0qnflahe"
-thumb = "https://www.google.com/s2/favicons?domain=nostur.com&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/nostur.com"
 url = "https://nostur.com/"
 gallery = []
 features = [

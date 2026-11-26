@@ -12,7 +12,7 @@ platforms = [
 ]
 
 npub = "npub16dhgpql60vmd4mnydjut87vla23a38j689jssaqlqqlzrtqtd0kqex0nkq"
-thumb = "https://www.google.com/s2/favicons?domain=shopstr.store&sz=256"
+thumb = "https://proxy.mega-utilities.com/favicon/shopstr.store"
 url = "https://shopstr.store/"
 gallery = []
 features = [
